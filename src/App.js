@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import Todo from './Components/Todo/Todo';
+
 import './App.css';
 
 function App() {
@@ -24,11 +26,16 @@ function App() {
 		<div className='App'>
 			<h1>Hello World</h1>
 			<form>
-				<input
-					type='text'
-					value={input}
-					onChange={(event) => setInput(event.target.value)}
-				/>
+				<FormControl>
+					<InputLabel htmlFor='writeTodo'>✅ Write a todo</InputLabel>
+					<Input
+						id='writeTodo'
+						type='text'
+						value={input}
+						onChange={(event) => setInput(event.target.value)}
+					/>
+				</FormControl>
+
 				<Button
 					type='submit'
 					onClick={addTodo}
@@ -40,7 +47,7 @@ function App() {
 			</form>
 			<ul>
 				{todos.map((todo, index) => (
-					<li key={index}>{todo}</li>
+					<Todo key={index.toString()} text={todo} />
 				))}
 			</ul>
 		</div>
