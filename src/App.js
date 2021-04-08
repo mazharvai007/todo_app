@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import Todo from './Components/Todo/Todo';
 import db from './firebase';
 import firebase from 'firebase';
@@ -43,12 +44,22 @@ function App() {
 		setInput('');
 	};
 
+	/**
+	 * Write custom style
+	 */
+	const useStyles = makeStyles({
+		todoItems: {
+			marginTop: '30px',
+		},
+	});
+	const todoStyle = useStyles();
+
 	return (
 		<div className='App'>
-			<h1>Hello World</h1>
+			<h1>Add Task</h1>
 			<form>
 				<FormControl>
-					<InputLabel htmlFor='writeTodo'>✅ Write a todo</InputLabel>
+					<InputLabel htmlFor='writeTodo'>✅ Write here</InputLabel>
 					<Input
 						id='writeTodo'
 						type='text'
@@ -66,7 +77,7 @@ function App() {
 					Add Todo
 				</Button>
 			</form>
-			<ul>
+			<ul className={todoStyle.todoItems}>
 				{todos.map((todo) => (
 					<Todo key={todo.id} todo={todo} />
 				))}
