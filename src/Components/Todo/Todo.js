@@ -70,7 +70,6 @@ function Todo(props) {
 				<div style={modalPosition} className={todoStyle.modalStyle}>
 					<h2>Text in a modal</h2>
 					<input
-						type='text'
 						value={input}
 						placeholder={props.todo.text}
 						onChange={(event) => setInput(event.target.value)}
@@ -78,7 +77,7 @@ function Todo(props) {
 					<Button
 						varient='outlined'
 						color='primary'
-						onClick={(e) => updateTodo}>
+						onClick={updateTodo}>
 						Update
 					</Button>
 				</div>
